@@ -29,6 +29,29 @@ export interface Database {
           text?: string | null
         }
       }
+      post_instances: {
+        Row: {
+          instance_id: number
+          is_liked: boolean | null
+          is_saved: boolean | null
+          post_id: number | null
+          user_id: number | null
+        }
+        Insert: {
+          instance_id?: number
+          is_liked?: boolean | null
+          is_saved?: boolean | null
+          post_id?: number | null
+          user_id?: number | null
+        }
+        Update: {
+          instance_id?: number
+          is_liked?: boolean | null
+          is_saved?: boolean | null
+          post_id?: number | null
+          user_id?: number | null
+        }
+      }
       posts: {
         Row: {
           body: string | null
@@ -68,23 +91,6 @@ export interface Database {
           thumbnail_url?: string | null
           title?: string
           topic?: string
-        }
-      }
-      saved_posts: {
-        Row: {
-          id: number
-          post_id: number | null
-          user_id: number | null
-        }
-        Insert: {
-          id?: number
-          post_id?: number | null
-          user_id?: number | null
-        }
-        Update: {
-          id?: number
-          post_id?: number | null
-          user_id?: number | null
         }
       }
       users: {
