@@ -70,6 +70,23 @@ export interface Database {
           topic?: string
         }
       }
+      saved_posts: {
+        Row: {
+          id: number
+          post_id: number | null
+          user_id: number | null
+        }
+        Insert: {
+          id?: number
+          post_id?: number | null
+          user_id?: number | null
+        }
+        Update: {
+          id?: number
+          post_id?: number | null
+          user_id?: number | null
+        }
+      }
       users: {
         Row: {
           first_name: string | null
