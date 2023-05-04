@@ -39,6 +39,7 @@ export interface Database {
           liked_by: string[] | null
           post_id: number
           tags: string[] | null
+          thumbnail_url: string | null
           title: string
           topic: string
         }
@@ -51,6 +52,7 @@ export interface Database {
           liked_by?: string[] | null
           post_id?: number
           tags?: string[] | null
+          thumbnail_url?: string | null
           title: string
           topic: string
         }
@@ -63,6 +65,7 @@ export interface Database {
           liked_by?: string[] | null
           post_id?: number
           tags?: string[] | null
+          thumbnail_url?: string | null
           title?: string
           topic?: string
         }
