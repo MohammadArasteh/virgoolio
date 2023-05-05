@@ -1,4 +1,5 @@
 import { cva, VariantProps } from "cva";
+import cn from "@/utils/cn";
 
 const heading1Variants = cva(
   " text-center lg:text-left font-extrabold leading-tight tracking-tighter",
@@ -27,7 +28,7 @@ const Heading1: React.FC<Heading1Props> = ({
   ...props
 }) => {
   return (
-    <h1 {...props} className={heading1Variants({ size, className })}>
+    <h1 {...props} className={cn(heading1Variants({ size, className }))}>
       {children}
     </h1>
   );
