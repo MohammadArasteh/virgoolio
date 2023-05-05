@@ -3,20 +3,17 @@ import { VariantProps, cva } from "cva";
 
 import cn from "@/utils/cn";
 
-export const paragraphVariants = cva(
-  "max-w-prose text-slate-700 mb-2 text-center",
-  {
-    variants: {
-      size: {
-        default: "text-base sm:text-lg",
-        sm: "text-sm sm:text-base",
-      },
+export const paragraphVariants = cva("max-w-prose text-slate-700 mb-2", {
+  variants: {
+    size: {
+      default: "text-base sm:text-lg",
+      sm: "text-sm sm:text-base",
     },
-    defaultVariants: {
-      size: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    size: "default",
+  },
+});
 
 interface ParagraphProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
