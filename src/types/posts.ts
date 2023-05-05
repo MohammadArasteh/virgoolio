@@ -25,6 +25,7 @@ type PostSummary = {
   created_at: number;
   fancy_time: string;
   like_count: number;
+  comment_count: number;
   is_saved: boolean;
 };
 
