@@ -21,16 +21,19 @@ const LocalStorageContext = React.createContext<LocalStorageCtx>({
 const getItemFromLocalStorage = <K extends keyof LocalStorageType>(
   key: K
 ): LocalStorageType[K] | undefined => {
-  const item = window.localStorage.getItem(key);
-  if (item) return JSON.parse(item) as LocalStorageType[K];
+  if (typeof window !== "undefined") {
+    const item = window.localStorage.getItem(key);
+    if (item) return JSON.parse(item) as LocalStorageType[K];
+  }
   return undefined;
 };
 const getLocalStorageValue = (): LocalStorageType => {
   const localStorageValue: any = {};
-  Object.keys(window.localStorage).forEach((key) => {
-    const item = getItemFromLocalStorage(key as keyof LocalStorageType);
-    if (item) localStorageValue[key] = item;
-  });
+  if (typeof window !== "undefined")
+    Object.keys(window.localStorage).forEach((key) => {
+      const item = getItemFromLocalStorage(key as keyof LocalStorageType);
+      if (item) localStorageValue[key] = item;
+    });
   return localStorageValue;
 };
 

@@ -1,3 +1,4 @@
+import NavbarComponent from "@/components/NavbarComponent";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -9,6 +10,7 @@ export default function Document() {
           rel="stylesheet"
           type="text/css"
         />
+        <NavbarComponent />
       </Head>
       <body dir="rtl">
         <Main />
