@@ -14,6 +14,7 @@ const posts: PostSummary[] = [
     is_saved: false,
     created_by: "El cucuy",
     comment_count: 3,
+    link: "virgool.io",
   },
   {
     title: "داستان طراحی محصول تپسی",
@@ -28,6 +29,7 @@ const posts: PostSummary[] = [
     is_saved: false,
     created_by: "آرین مقبلی",
     comment_count: 2,
+    link: "virgool.io",
   },
   {
     title: "شغل مناسب شما؟",
@@ -42,6 +44,22 @@ const posts: PostSummary[] = [
     is_saved: false,
     created_by: "Amin Javad",
     comment_count: 1,
+    link: "virgool.io",
+  },
+  {
+    title: "داستان طراحی محصول تپسی",
+    thumbnail:
+      "https://files.virgool.io/upload/users/5891/posts/gfbrm8sjyvrq/egwrckuyac7j.png?x-img=v1/resize,w_700/optimize,q_100?x-img=v1/resize,w_850/optimize,q_100",
+    profile_url:
+      "https://files.virgool.io/upload/users/19539/avatar/7r2or6.jpg?x-img=v1/resize,h_120,w_120/optimize,q_100",
+    body: "این داستان (Case-Study) برشی از دوره همکاری من با تپسی به عنوان سرپرست تیم دیزاین‌محصول هست و به شکلی تاریخچه شکل‌گیری سرویس‌های تاکسی اینت…",
+    created_at: 0,
+    fancy_time: "1 هفته پیش",
+    like_count: 143,
+    is_saved: false,
+    created_by: "آرین مقبلی",
+    comment_count: 2,
+    link: "virgool.io",
   },
 ];
 

@@ -18,6 +18,7 @@ type Post = {
 
 type PostSummary = {
   title: string;
+  link: string;
   thumbnail: string;
   profile_url: string;
   body: string;

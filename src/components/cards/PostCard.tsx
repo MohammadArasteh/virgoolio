@@ -1,9 +1,9 @@
 import { PostSummary } from "@/types/posts";
 import { cva, VariantProps } from "cva";
 import Image from "next/image";
-import Heading1 from "./ui/Heading1";
+import Heading1 from "../ui/Heading1";
 import Link from "next/link";
-import Paragraph from "./ui/Paragraph";
+import Paragraph from "../ui/Paragraph";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { GrBookmark } from "react-icons/gr";
 
