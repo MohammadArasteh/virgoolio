@@ -2,6 +2,7 @@ import { useAuth } from "@/context/AuthContext";
 import VirgoolIcon from "./VirgoolIcon";
 import Link from "next/link";
 import { Button } from "./ui/Button";
+import { HiSearch } from "react-icons/hi";
 
 function NavbarComponent() {
   const user = useAuth();
@@ -20,15 +21,23 @@ function NavbarComponent() {
               </Link>
             </div>
             <div className="py-3 flex flex-row items-center justify-center gap-[0.5rem] p-1">
+              <div
+                className="cursor-pointer"
+                onClick={() => alert("under construction 👨‍🔧")}
+              >
+                <HiSearch size={30} color="#8e8e8e" />
+              </div>
               {!!user ? (
                 <>user profile</>
               ) : (
                 <>
-                  <Button variant={"text"}>
+                  <Button variant={"text"} className="py-1 px-5">
                     <Link href={"/login"}>ورود</Link>
                   </Button>
                   <Button>
-                    <Link href={"/register"}>ثبت نام</Link>
+                    <Link href={"/register"} className="py-1 px-5">
+                      ثبت نام
+                    </Link>
                   </Button>
                 </>
               )}
