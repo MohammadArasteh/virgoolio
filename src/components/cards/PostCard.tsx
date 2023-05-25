@@ -1,82 +1,69 @@
 import { PostSummary } from "@/types/posts";
 import { cva, VariantProps } from "cva";
 import Image from "next/image";
-import Heading1 from "../ui/Heading1";
+import Heading from "../ui/Heading1";
 import Link from "next/link";
 import Paragraph from "../ui/Paragraph";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { GrBookmark } from "react-icons/gr";
 
-const postCardVariants = cva(
-  "box-border flex justify-between items-start w-[466px] h-[220px]",
-  {
-    variants: {
-      type: {
-        streamItem: "flex-row ",
-        headStream: "flex-row",
-        mainHeadStream: "flex-col",
-      },
-    },
-    defaultVariants: {
-      type: "streamItem",
-    },
-  }
-);
-
-type PostCardProps = { post: PostSummary } & VariantProps<
-  typeof postCardVariants
->;
+type PostCardProps = { post: PostSummary };
 
 const PostCard = (props: PostCardProps) => {
   return (
-    <article
-      className={postCardVariants({
-        type: props.type,
-        className: "bg-slate-100 rounded-md",
-      })}
-    >
-      <div className="relative h-52 w-full">
-        <Image
-          src={props.post.thumbnail}
-          alt={props.post.title}
-          fill
-          style={{ objectFit: "cover" }}
+    <article className={"bg-white rounded-md py-[15px] px-[20px]"}>
+      <header className="flex justify-between mb-4 relative">
+        <div className="relative flex flex-row gap-3">
+          <div className="relative w-[40px] h-[40px]">
+            <a href={props.post.profile_url}>
+              <Image
+                src={props.post.profile_url}
+                alt={props.post.title}
+                fill
+                className="inline-block rounded-full object-cover"
+              />
+            </a>
+          </div>
+          <div className="flex flex-col items-center">
+            <Paragraph size={"sm"} className="font-bold mb-[10px]">
+              {props.post.created_by}
+            </Paragraph>
+            <Paragraph size={"xs"}>{props.post.fancy_time}</Paragraph>
+          </div>
+        </div>
+      </header>
+      <div className="mb-[20px]">
+        <a>
+          <Heading className="mb-[20px]" size={"xs"}>
+            {props.post.title}
+          </Heading>
+          <div className="relative h-[200px] w-full mb-[15px]">
+            <Image
+              fill
+              src={props.post.thumbnail}
+              alt={props.post.title}
+              className="object-cover"
+            />
+          </div>
+          <Paragraph className="text-gray-400">{props.post.body}</Paragraph>
+        </a>
+      </div>
+      <div className="flex gap-3 w-full justify-between">
+        <span className="flex flex-row gap-1 items-center">
+          <RxHeart
+            size={25}
+            className="cursor-pointer text-gray-400 hover:text-red-600"
+          />
+          <Link href={"/"} className="text-gray-400">
+            {props.post.like_count ? props.post.like_count : null}
+          </Link>
+        </span>
+        <GrBookmark
+          size={25}
+          className="cursor-pointer text-gray-400"
+          color="red"
         />
       </div>
-      <section className="flex flex-col gap-2 p-1">
-        <Link href={"/"}>
-          <Heading1 size="sm">{props.post.title}</Heading1>
-        </Link>
-        <Link href={"/"}>
-          <Paragraph>{props.post.body}</Paragraph>
-        </Link>
-        <section className="flex flex-row justify-between items-center">
-          <div>
-            <span>{props.post.created_by}</span>
-            <br />
-            <span>
-              {props.post.fancy_time}{" "}
-              {`${
-                props.post.comment_count
-                  ? `- ${props.post.comment_count} نظر`
-                  : ``
-              }`}
-            </span>
-          </div>
-          <div className="flex gap-3">
-            <span className="flex flex-row gap-1 items-center">
-              <RxHeart
-                size={25}
-                className="cursor-pointer hover:text-red-600"
-              />
-              <Link href={"/"}>
-                {props.post.like_count ? props.post.like_count : null}
-              </Link>
-            </span>
-            <GrBookmark size={25} className="cursor-pointer" />
-          </div>
-        </section>
-      </section>
     </article>
   );
 };

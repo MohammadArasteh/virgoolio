@@ -12,7 +12,7 @@ export default function Document() {
         />
         <NavbarComponent />
       </Head>
-      <body dir="rtl">
+      <body dir="rtl" className="bg-[#f5f5f5]">
         <Main />
         <NextScript />
       </body>

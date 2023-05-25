@@ -1,5 +1,4 @@
 import { PostSummary } from "@/types/posts";
-import PostCard from "./cards/PostCard";
 import SuggestionCard from "./cards/SuggestionCard";
 import Paragraph from "./ui/Paragraph";
 
@@ -10,7 +9,7 @@ type Props = {
 const SuggestionBoard = (props: Props) => {
   if (props.posts.length === 0) return null;
   return (
-    <section className="pt-4">
+    <section className="mb-8">
       <Paragraph size={"sm"} className="mb-4">
         مطالب انتخابی برای شما
       </Paragraph>

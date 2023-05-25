@@ -1,4 +1,5 @@
 import { PostSummary } from "@/types/posts";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const posts: PostSummary[] = [
   {
@@ -64,3 +65,9 @@ const posts: PostSummary[] = [
 ];
 
 export { posts };
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<PostSummary[]>
+) {
+  res.status(200).json([...posts, ...posts, ...posts]);
+}

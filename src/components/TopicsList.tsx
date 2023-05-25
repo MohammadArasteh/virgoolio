@@ -7,7 +7,7 @@ type Props = {
 export const TopicsList = (props: Props) => {
   if (props.topics.length === 0) return null;
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 mb-8">
       <div className="text-[#2c89c6] font-extrabold mb-4">
         دسته‌بندی موضوعی:
       </div>

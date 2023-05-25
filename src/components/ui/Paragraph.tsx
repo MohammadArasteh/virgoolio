@@ -3,11 +3,12 @@ import { VariantProps, cva } from "cva";
 
 import cn from "@/utils/cn";
 
-export const paragraphVariants = cva("max-w-prose text-slate-700 mb-2", {
+export const paragraphVariants = cva("max-w-prose text-slate-700", {
   variants: {
     size: {
       default: "text-base sm:text-lg",
       sm: "text-sm sm:text-base",
+      xs: "text-xs",
     },
   },
   defaultVariants: {

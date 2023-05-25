@@ -7,6 +7,7 @@ const heading1Variants = cva("font-extrabold leading-tight tracking-tighter", {
       default: "text-4xl md:text-5xl lg:text-6xl",
       lg: "text-5xl md:text-6xl lg:text-7xl",
       sm: "text-2xl md:text-3xl lg:text-4xl",
+      xs: "text-xl",
     },
   },
   defaultVariants: {
@@ -18,7 +19,7 @@ interface Heading1Props
   extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof heading1Variants> {}
 
-const Heading1: React.FC<Heading1Props> = ({
+const Heading: React.FC<Heading1Props> = ({
   children,
   className,
   size,
@@ -31,4 +32,4 @@ const Heading1: React.FC<Heading1Props> = ({
   );
 };
 
-export default Heading1;
+export default Heading;
