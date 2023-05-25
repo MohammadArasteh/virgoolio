@@ -7,7 +7,7 @@ import { HiSearch } from "react-icons/hi";
 function NavbarComponent() {
   const user = useAuth();
   return (
-    <section className="navbar">
+    <section className="navbar mb-8">
       <section className="topbar py-[1rem] relative">
         <div id="App_Search" className="App_Search"></div>
         <div className="px-[0.9375em] m-auto relative max-w-[100%] w-[1000px]">
@@ -45,6 +45,94 @@ function NavbarComponent() {
           </section>
         </div>
       </section>
+      <nav className="bg-[#107abe] text-sm">
+        <div className="max-w-[100%] w-[1000px] relative mx-auto px-[0.9375em]">
+          <ul className="inline overflow-x-hidden p-0 list-none m-0">
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={"https://virgool.io"}
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                جدیدترین پست‌ها
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={"https://virgool.io/feeds"}
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                پست‌های دوستان
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={
+                  "https://virgool.io/tag/%D8%A7%D8%B3%D8%AA%D8%A7%D8%B1%D8%AA%D8%A7%D9%BE"
+                }
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                استارتاپ
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={
+                  "https://virgool.io/tag/%DA%A9%D8%B3%D8%A8-%D9%88-%DA%A9%D8%A7%D8%B1"
+                }
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                کسب و کار
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={"https://virgool.io/tag/%D8%B2%D9%86%D8%AF%DA%AF%DB%8C"}
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                زندگی
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={"https://virgool.io/tag/%DA%A9%D8%AA%D8%A7%D8%A8"}
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                کتاب
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={
+                  "https://virgool.io/tag/%D8%AE%D9%84%D8%A7%D9%82%DB%8C%D8%AA"
+                }
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                خلاقیت
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={
+                  "https://virgool.io/tag/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C"
+                }
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                برنامه نویسی
+              </Link>
+            </li>
+            <li className="py-[15px] pl-[15px] pr-0 inline-block whitespace-nowrap">
+              <Link
+                href={
+                  "https://virgool.io/tag/%D8%AD%D8%A7%D9%84-%D8%AE%D9%88%D8%A8%D8%AA%D9%88-%D8%A8%D8%A7-%D9%85%D9%86-%D8%AA%D9%82%D8%B3%DB%8C%D9%85-%DA%A9%D9%86"
+                }
+                className="text-[hsla(0,0%,100%,.84)] transition-all text-base"
+              >
+                حال خوبتو با من تقسیم کن
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </section>
   );
 }
