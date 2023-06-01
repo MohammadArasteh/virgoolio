@@ -1,20 +1,22 @@
 import Link from "next/link";
-import classes from "../styles/register.module.css";
+import classes from "../styles/login.module.css";
 import Image from "next/image";
 import React, { MouseEventHandler } from "react";
 import { Button } from "@/components/ui/Button";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 type PageProps = {};
 
-export default function Login(props: PageProps) {
+export default function Register(props: PageProps) {
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [userInput, setUserInput] = React.useState<string>("");
+  const [username, setUsername] = React.useState<string>("");
+  const [isSubmittedUsername, setIsSubmittedUsername] =
+    React.useState<boolean>(false);
+  const [password, setPassword] = React.useState<string>("");
 
   const onSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
-    setLoading(true);
-    await new Promise((res) => setTimeout(res, 5000));
-    setLoading(false);
+    if (isSubmittedUsername) {
+    } else setIsSubmittedUsername(true);
   };
 
   return (
@@ -48,21 +50,42 @@ export default function Login(props: PageProps) {
         <section
           className={`${classes["splash-inner"]} ${classes["form-section-inner"]}`}
         >
-          <div className={classes["splash--title"]}>ایجاد حساب کاربری</div>
-          <div className={classes["splash--subtitle"]}>
-            شماره موبایل یا پست الکترونیک خود را وارد کنید
+          <div
+            className={classes["splash--title"]}
+            style={{ textAlign: isSubmittedUsername ? "center" : "unset" }}
+          >
+            {isSubmittedUsername
+              ? "رمز عبور را وارد نمایید"
+              : "ایجاد حساب کاربری"}
           </div>
+          {!isSubmittedUsername && (
+            <div className={classes["splash--subtitle"]}>
+              شماره موبایل یا پست الکترونیک خود را وارد کنید
+            </div>
+          )}
           <div className="mt-5">
             <div className="mb-4">
-              <input
-                className={classes["input-field"]}
-                type="text"
-                name="userInput"
-                dir="auto"
-                placeholder="شماره موبایل یا پست الکترونیک"
-                onChange={(e) => setUserInput(e.currentTarget.value)}
-                value={userInput}
-              />
+              {isSubmittedUsername ? (
+                <input
+                  className={classes["input-field"]}
+                  type="text"
+                  name="userPassword"
+                  dir="auto"
+                  placeholder="رمز عبور"
+                  onChange={(e) => setPassword(e.currentTarget.value)}
+                  value={password}
+                />
+              ) : (
+                <input
+                  className={classes["input-field"]}
+                  type="text"
+                  name="userInput"
+                  dir="auto"
+                  placeholder="شماره موبایل یا پست الکترونیک"
+                  onChange={(e) => setUsername(e.currentTarget.value)}
+                  value={username}
+                />
+              )}
             </div>
             <div className="mb-4">
               <Button
@@ -76,15 +99,33 @@ export default function Login(props: PageProps) {
             </div>
             <div className="mb-4"></div>
           </div>
-          <div className={`${classes["text-link"]} ${classes["terms"]}`}>
-            ثبت نام در ویرگول به منزله موافقت با
-            <Link href={"/terms"}> قوانین </Link>
-            است
-          </div>
+          {!isSubmittedUsername && (
+            <div className={`${classes["text-link"]} ${classes["terms"]}`}>
+              ثبت نام در ویرگول به منزله موافقت با
+              <Link href={"/terms"}> قوانین </Link>
+              است
+            </div>
+          )}
+          {isSubmittedUsername && (
+            <Button
+              variant={"text"}
+              isLoading={loading}
+              className="rounded-full w-full"
+              onClick={() => {
+                setIsSubmittedUsername(false);
+                setPassword("");
+              }}
+            >
+              <FaChevronRight className="ml-2" size={15} />
+              برگشت به مرحله قبل
+            </Button>
+          )}
         </section>
-        <Link href={"/login"} className={`${classes["signin"]}`}>
-          قبلا عضو شده‌اید؟ رفتن به صفحه ورود
-        </Link>
+        {!isSubmittedUsername && (
+          <Link href={"/login"} className={`${classes["signup"]}`}>
+            عضو نیستید؟ ثبت نام کنید{" "}
+          </Link>
+        )}
       </section>
     </main>
   );

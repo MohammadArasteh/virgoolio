@@ -7,7 +7,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 type PageProps = {};
 
-export default function Register(props: PageProps) {
+export default function Login(props: PageProps) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [username, setUsername] = React.useState<string>("");
   const [isSubmittedUsername, setIsSubmittedUsername] =
