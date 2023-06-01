@@ -3,9 +3,14 @@ import VirgoolIcon from "./VirgoolIcon";
 import Link from "next/link";
 import { Button } from "./ui/Button";
 import { HiSearch } from "react-icons/hi";
+import { useRouter } from "next/router";
 
 function NavbarComponent() {
   const user = useAuth();
+  const router = useRouter();
+
+  if (["/register", "/login"].includes(router.pathname)) return null;
+
   return (
     <section className="navbar mb-8">
       <section className="topbar py-[1rem] relative">
