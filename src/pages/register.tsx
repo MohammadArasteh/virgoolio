@@ -82,10 +82,7 @@ export default function Login(props: PageProps) {
             است
           </div>
         </section>
-        <Link
-          href={"/login"}
-          className={`${classes["btn"]} ${classes["btn-link"]} ${classes["signup"]}`}
-        >
+        <Link href={"/login"} className={`${classes["signin"]}`}>
           قبلا عضو شده‌اید؟ رفتن به صفحه ورود
         </Link>
       </section>
