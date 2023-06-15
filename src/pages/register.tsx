@@ -4,6 +4,9 @@ import Image from "next/image";
 import React, { MouseEventHandler } from "react";
 import { Button } from "@/components/ui/Button";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import axios from "axios";
+import { GeneralResponse } from "./api/GeneralResponse";
+import { useRouter } from "next/router";
 
 type PageProps = {};
 
@@ -13,9 +16,17 @@ export default function Register(props: PageProps) {
   const [isSubmittedUsername, setIsSubmittedUsername] =
     React.useState<boolean>(false);
   const [password, setPassword] = React.useState<string>("");
+  const router = useRouter();
 
   const onSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     if (isSubmittedUsername) {
+      setLoading(true);
+      const result = await axios.post<GeneralResponse<string>>(
+        "http://localhost:3000/api/auth/register",
+        { username, password }
+      );
+      if (result.data.status) router.push("/login");
+      setLoading(false);
     } else setIsSubmittedUsername(true);
   };
 
@@ -68,7 +79,7 @@ export default function Register(props: PageProps) {
               {isSubmittedUsername ? (
                 <input
                   className={classes["input-field"]}
-                  type="text"
+                  type="password"
                   name="userPassword"
                   dir="auto"
                   placeholder="رمز عبور"
@@ -109,7 +120,6 @@ export default function Register(props: PageProps) {
           {isSubmittedUsername && (
             <Button
               variant={"text"}
-              isLoading={loading}
               className="rounded-full w-full"
               onClick={() => {
                 setIsSubmittedUsername(false);

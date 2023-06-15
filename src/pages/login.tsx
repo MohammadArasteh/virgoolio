@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { MouseEventHandler } from "react";
 import { Button } from "@/components/ui/Button";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import axios from "axios";
+import { GeneralResponse } from "./api/GeneralResponse";
 
 type PageProps = {};
 
@@ -16,6 +18,13 @@ export default function Login(props: PageProps) {
 
   const onSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     if (isSubmittedUsername) {
+      setLoading(true);
+      const result = await axios.post<GeneralResponse<string>>(
+        "http://localhost:3000/api/auth/login",
+        { username, password }
+      );
+      console.log(result);
+      setLoading(false);
     } else setIsSubmittedUsername(true);
   };
 
@@ -68,7 +77,7 @@ export default function Login(props: PageProps) {
               {isSubmittedUsername ? (
                 <input
                   className={classes["input-field"]}
-                  type="text"
+                  type="password"
                   name="userPassword"
                   dir="auto"
                   placeholder="رمز عبور"
@@ -108,7 +117,6 @@ export default function Login(props: PageProps) {
           {isSubmittedUsername && (
             <Button
               variant={"text"}
-              isLoading={loading}
               className="rounded-full w-full"
               onClick={() => {
                 setIsSubmittedUsername(false);
