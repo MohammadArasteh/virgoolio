@@ -3,11 +3,19 @@ import VirgoolIcon from "./VirgoolIcon";
 import Link from "next/link";
 import { Button } from "./ui/Button";
 import { HiSearch } from "react-icons/hi";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import React from "react";
 
 function NavbarComponent() {
   const user = useAuth();
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    setIsAuthenticated(!!user);
+  }, [user]);
 
   if (["/register", "/login"].includes(router.pathname)) return null;
 
@@ -21,9 +29,18 @@ function NavbarComponent() {
               <Link href={"/"}>
                 <VirgoolIcon />
               </Link>
-              <Link href={"/about-us"} style={{ color: "rgb(16, 122, 190)" }}>
-                ویرگول چیست؟
-              </Link>
+              {!isAuthenticated ? (
+                <Link href={"/about-us"} style={{ color: "rgb(16, 122, 190)" }}>
+                  ویرگول چیست؟
+                </Link>
+              ) : (
+                <Link
+                  href={"/post/create"}
+                  style={{ color: "rgb(16, 122, 190)" }}
+                >
+                  نوشتن پست جدید
+                </Link>
+              )}
             </div>
             <div className="py-3 flex flex-row items-center justify-center gap-[0.5rem] p-1">
               <div
@@ -32,8 +49,22 @@ function NavbarComponent() {
               >
                 <HiSearch size={30} color="#8e8e8e" />
               </div>
-              {!!user ? (
-                <>user profile</>
+              {!!isAuthenticated ? (
+                <>
+                  <div
+                    className="cursor-pointer mx-4"
+                    onClick={() => alert("under construction 👨‍🔧")}
+                  >
+                    <IoMdNotificationsOutline size={30} color="#8e8e8e" />
+                  </div>
+                  <Image
+                    alt={user?.user_name || ""}
+                    src={user?.profile_url || "/default_avatar.jpg"}
+                    width={38}
+                    height={38}
+                    className="rounded-full cursor-pointer"
+                  />
+                </>
               ) : (
                 <>
                   <Button variant={"text"} className="py-1 px-5">
