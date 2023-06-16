@@ -28,6 +28,41 @@ export interface Database {
           created_by?: string | null
           text?: string | null
         }
+        Relationships: []
+      }
+      followings: {
+        Row: {
+          created_at: string | null
+          from: number | null
+          id: number
+          to: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          from?: number | null
+          id?: number
+          to?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          from?: number | null
+          id?: number
+          to?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "followings_from_fkey"
+            columns: ["from"]
+            referencedRelation: "users"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "followings_to_fkey"
+            columns: ["to"]
+            referencedRelation: "users"
+            referencedColumns: ["user_id"]
+          }
+        ]
       }
       post_instances: {
         Row: {
@@ -51,6 +86,7 @@ export interface Database {
           post_id?: number | null
           user_id?: number | null
         }
+        Relationships: []
       }
       posts: {
         Row: {
@@ -92,9 +128,11 @@ export interface Database {
           title?: string
           topic?: string
         }
+        Relationships: []
       }
       users: {
         Row: {
+          description: string | null
           first_name: string | null
           last_name: string | null
           password: string
@@ -103,6 +141,7 @@ export interface Database {
           user_name: string | null
         }
         Insert: {
+          description?: string | null
           first_name?: string | null
           last_name?: string | null
           password: string
@@ -111,6 +150,7 @@ export interface Database {
           user_name?: string | null
         }
         Update: {
+          description?: string | null
           first_name?: string | null
           last_name?: string | null
           password?: string
@@ -118,6 +158,7 @@ export interface Database {
           user_id?: number
           user_name?: string | null
         }
+        Relationships: []
       }
     }
     Views: {

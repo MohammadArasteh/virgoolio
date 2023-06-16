@@ -5,6 +5,9 @@ type User = {
   profile_url: string | null;
   user_id: number;
   user_name: string | null;
+  description: string | null;
 };
 
-export type { User };
+type UserInfo = Omit<User, "password">;
+
+export type { User, UserInfo };
