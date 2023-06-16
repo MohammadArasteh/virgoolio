@@ -46,6 +46,7 @@ const LocalStorageProvider = ({ children }: { children: React.ReactNode }) => {
     key: K,
     value: LocalStorageType[K]
   ) => {
+    localStorage.setItem(key, JSON.stringify(value));
     _setLocalStorage((ls) => ({ ...ls, [key]: value }));
   };
 
