@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import axios from "axios";
 import { GeneralResponse } from "./api/GeneralResponse";
+import { User } from "@/types/users";
+import { useLocalStorage } from "@/context/LocalStorageCtx";
+import { useRouter } from "next/router";
 
 type PageProps = {};
 
@@ -15,15 +18,20 @@ export default function Login(props: PageProps) {
   const [isSubmittedUsername, setIsSubmittedUsername] =
     React.useState<boolean>(false);
   const [password, setPassword] = React.useState<string>("");
+  const [auth, setAuth] = useLocalStorage("Authentication");
+  const router = useRouter();
 
   const onSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     if (isSubmittedUsername) {
       setLoading(true);
-      const result = await axios.post<GeneralResponse<string>>(
+      const result = await axios.post<GeneralResponse<User>>(
         "http://localhost:3000/api/auth/login",
         { username, password }
       );
-      console.log(result);
+      if (result.data.result) {
+        setAuth(result.data.result);
+        router.push("/");
+      }
       setLoading(false);
     } else setIsSubmittedUsername(true);
   };
